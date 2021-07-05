@@ -34,7 +34,8 @@ import {RiLockPasswordFill} from 'react-icons/ri';
 import {BsArrowUpRight, BsFiles, BsCircle} from 'react-icons/bs';
 import {CgClose} from 'react-icons/cg';
 import {BiStar} from 'react-icons/bi';
-import {IoIosRocket} from 'react-icons/io';
+import {IoIosRocket, IoMdRefresh} from 'react-icons/io';
+import {GrFormRefresh} from 'react-icons/gr';
 
 export default function Browser() {
   const {isOpen, onOpen, onClose} = useDisclosure();
@@ -189,31 +190,42 @@ export default function Browser() {
                 <VStack spacing={3}>
                   <VStack spacing={1}>
                     <HStack>
-                      <Flex flexDir='row' borderRadius='15px' backgroundColor='#AAAAAA' alignItems='center' pl='0.2rem' pr='0.2rem'>
-                        <Icon as={token1Icon}/>
-                        {token1Amount}
+                      <Flex flexDir='row' borderRadius='15px' backgroundColor='#1f2327' alignItems='center' pl='0.2rem' pr='0.2rem'>
+                        <Icon as={token1Icon} boxSize='1.4rem' color='#b9babb'/>
+                        <Text color='#b9babb' fontSize='1.4rem'>
+                          {token1Amount}
+                        </Text>                        
                       </Flex>
-                      <Flex flexDir='row' borderRadius='15px' backgroundColor='#AAAAAA' alignItems='center' pl='0.2rem' pr='0.2rem'>
-                        <Icon as={token2Icon}/>
-                        {token2Amount}
+                      <Flex flexDir='row' borderRadius='15px' backgroundColor='#1f2327' alignItems='center' pl='0.2rem' pr='0.2rem'>
+                        <Icon as={token2Icon} boxSize='1.4rem' color='#b9babb'/>
+                        <Text color='#b9babb' fontSize='1.4rem'>
+                          {token2Amount}
+                        </Text>
                       </Flex>
+                      <Icon as={IoMdRefresh} boxSize='2.0rem' color='#b9babb' _hover={{cursor:'pointer', backgroundColor:'#1f2327'}} borderRadius='full' p='0.4rem'/>
                     </HStack>
-                    <Text>
+                    <Text color='#b9babb' fontSize='0.9rem' mt='0.3rem' as='i'>
                       UniSwap V2 Index: {uniIndex}
                     </Text>
                   </VStack>
                   <HStack>
                     <Flex flexDir='row' borderRadius='15px' _hover={{cursor: 'pointer', backgroundColor:'#AAAAAA'}} pl='0.5rem' pr='0.5rem'>
-                      Pair
-                      <Icon as={BsArrowUpRight}/>
+                      <Text fontWeight={600}  color='#fafafa'>
+                        Pair
+                      </Text>
+                      <Icon as={BsArrowUpRight} color='#fafafa'/>
                     </Flex>
                     <Flex flexDir='row' borderRadius='15px' _hover={{cursor: 'pointer', backgroundColor:'#AAAAAA'}} pl='0.5rem' pr='0.5rem'>
-                      <Icon as={BsArrowUpRight}/>
-                      Dext
-                      <Icon as={BsArrowUpRight}/>
+                      <Icon as={BsArrowUpRight} color='#fafafa'/>
+                      <Text fontWeight={600}  color='#fafafa'>
+                        Dex
+                      </Text>
+                      <Icon as={BsArrowUpRight} color='#fafafa'/>
                     </Flex>
                     <Flex borderRadius='15px' _hover={{cursor: 'pointer', backgroundColor:'#AAAAAA'}} pl='0.5rem' pr='0.5rem'>
-                      View Lock Page
+                      <Text  fontWeight={600} color='#fafafa'>
+                        View Lock Page
+                      </Text>
                     </Flex>
                   </HStack>
                 </VStack>
@@ -341,17 +353,18 @@ export default function Browser() {
       'chain': 'Binance Mainnet'
     },
   ]
-
+ 
   
   return (
     <Flex flexDir='column' w='100%' h='1200px' backgroundColor='#191c1f'>
+      <Flex w='100%' h='120%' background='radial-gradient(circle at 50%, #a4fff6, #191c1f, transparent 100%)' opacity='0.2' pos='fixed' top='-950' zIndex={1}/>
     {exchangeOpen 
     ? 
     <Flex h='100%' backgroundColor='#191c1f'>
       {renderExchangeSelection(exchangeListProp)}
     </Flex>
     : 
-      <VStack w='30%' margin='auto' >
+      <VStack w='30%' margin='auto' pos='relative' top='-400'>
         {renderSelectedExchange('UniSwap V2')}
         <Flex w='100%' flexDir='row' justifyContent='space-between' border='thin solid #353535' borderRadius='10px'>
           <HStack w='33%' borderBottomLeftRadius='10px' p='0.5rem' justifyContent='center' 
